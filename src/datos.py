@@ -32,12 +32,14 @@ def importar_datos(ruta: str, lista: list=[]) -> list[dict]:
 
                 fila = archivo.readline() # Leemos otra linea para repetir en la siguiente iteracion.
 
-            print(f"Archivo cargado con exito, se cargaron {len(_lista)} juegos.")
-            input("Presione ENTER para continuar...")
-
     except FileNotFoundError:
         print(f"Error: No se encontró el archivo en la ruta obtenida: {ruta}")
 
+    if len(_lista) == 0:
+        print("No hay datos para mostrar.")
+    else:
+        print(f"Archivo cargado con exito, se cargaron {len(_lista)} juegos.")
+        input("Presione ENTER para continuar...")
     return _lista
 
 if __name__ == "__main__":
