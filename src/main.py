@@ -56,7 +56,7 @@ def menu_principal() -> None:
             print("Opcion no valida, intente nuevamente.")
 
 if __name__ == "__main__":
-    ruta_csv = "./data/prueba.csv"
+    ruta_csv = "./data/vgsales.csv"
 
     utils.limpiar_pantalla()
     print("Bienvenido al sistema :D")
