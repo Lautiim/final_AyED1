@@ -51,6 +51,9 @@ def menu_principal() -> None:
             print("-" * 40)
             reportes.ver_juegos(lista_datos)
         elif opcion == "Z":
+            # Al salir tenemos que exportar el resultado en un .csv llamado juegos_filtrados.csv
+            print("Saliendo del programa. ¡Hasta luego!")
+            datos.guardar_salir(_lista_datos)
             break
         else:
             print("Opcion no valida, intente nuevamente.")

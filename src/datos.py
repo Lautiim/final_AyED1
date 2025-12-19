@@ -42,8 +42,37 @@ def importar_datos(ruta: str, lista: list=[]) -> list[dict]:
         input("Presione ENTER para continuar...")
     return _lista
 
+def guardar_salir(lista: list[dict], ruta: str = "./data/juegos_filtrados.csv") -> None:
+    """Funcion para guardar la lista de datos en un archivo CSV al salir del programa.
+
+    Pre: Recibe la lista de datos a guardar y la ruta del archivo CSV (por defecto es ./data/juegos_filtrados.csv).
+
+    Post: No devuelve nada, solo guarda los datos en el archivo CSV.
+    """
+    assert isinstance(lista, list), "La lista no es de tipo lista."
+    assert isinstance(ruta, str), "La ruta ingresada no es valida, debe ser ser un String."
+
+    try:
+        with open(ruta, "w", encoding="utf-8") as archivo: # Abrimos el archivo en modo escritura
+            if len(lista) == 0:
+                print("No hay datos para guardar.")
+                return
+
+            # Escribimos los encabezados
+            encabezados = lista[0].keys()
+            archivo.write(",".join(encabezados) + "\n")
+
+            # Escribimos los datos
+            for registro in lista:
+                valores = [str(registro.get(encabezado, "")) for encabezado in encabezados]
+                archivo.write(",".join(valores) + "\n")
+
+        print(f"Datos guardados con exito en {ruta}.")
+    except Exception as e:
+        print(f"Error al guardar los datos: {e}")
+
 if __name__ == "__main__":
     utils.limpiar_pantalla()
-    ruta = "./data/prueba.csv"
+    ruta = "./data/vgsales.csv"
     datos = importar_datos(ruta)
     print(datos)

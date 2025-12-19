@@ -33,15 +33,14 @@ def buscar_juegos_por_plataforma(plataforma: str, datos: list[dict]) -> list[dic
 
     return resultados # Devolvemos la lista de resultados encontrados
 
-def precio_ventas_globales_pokemons(datos: list[dict]) -> float:
-    """Funcion para obtener el precio de ventas globales de los pokemons.
+def precio_ventas_globales_pokemons(datos: list[dict]) -> list[dict]:
+    """Funcion para obtener el precio de ventas globales de los pokemons. Solo se puede usar buscar con expresiones regulares
 
     Pre: Recibe la lista de datos donde buscar.
 
-    Post: Devuelve el precio de ventas globales de los pokemons.
+    Post: Devuelve un diccionario con dos columnas (Nombre y Global_Sales).
     """
-    assert isinstance(datos, list), "Los datos deben ser una lista."
-    assert len(datos) > 0, "La lista de datos no puede estar vacia."
+    lista_resultados = []
+    re.compile(r"p[oó]k[eé]m[oó]n", re.IGNORECASE)
 
-    total_ventas = sum(float(juego.get("Global_Sales", 0)) for juego in datos if "Pokemon" in juego.get("Name", "").lower())
-    return total_ventas
+    return lista_resultados
