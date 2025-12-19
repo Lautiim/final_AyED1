@@ -1,5 +1,21 @@
 import re
 
+def ver_juegos(datos: list[dict]) -> None:
+    """Funcion para mostrar todos los juegos en la lista de datos.
+
+    Pre: Recibe la lista de datos donde buscar.
+
+    Post: No devuelve nada, solo muestra los juegos en pantalla.
+    """
+    assert isinstance(datos, list), "Los datos deben ser una lista."
+    assert len(datos) > 0, "La lista de datos no puede estar vacia."
+
+    for juego in datos:
+        print(f"Nombre: {juego.get('Name', 'Desconocido')}")
+        print(f"Plataforma: {juego.get('Platform', 'Desconocido')}")
+        print(f"Ventas Globales: {juego.get('Global_Sales', 0)}")
+        print("-" * 40)
+
 def buscar_juegos_por_plataforma(plataforma: str, datos: list[dict]) -> list[dict]:
     """Funcion para buscar juegos segun el nombre o parte del nombre de la plataforma. No discrimina mayusculas de minusculas.
     
