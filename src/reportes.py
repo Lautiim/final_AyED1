@@ -41,6 +41,13 @@ def precio_ventas_globales_pokemons(datos: list[dict]) -> list[dict]:
     Post: Devuelve un diccionario con dos columnas (Nombre y Global_Sales).
     """
     lista_resultados = []
-    re.compile(r"p[oó]k[eé]m[oó]n", re.IGNORECASE)
+    patron = re.compile(r"p[oó]k[eé]m[oó]n", re.IGNORECASE)
+    for juego in datos:
+        if patron.search(juego.get("Name", "")):
+            registro = {
+                "Name": juego.get("Name", "Desconocido"),
+                "Global_Sales": juego.get("Global_Sales", 0)
+            }
+            lista_resultados.append(registro)
 
     return lista_resultados

@@ -43,8 +43,19 @@ def menu_principal() -> None:
         #elif opcion == "C":
         #    plataforma = input("Ingrese el nombre de la plataforma: ")
         #    datos.exportar_juegos_por_plataforma(plataforma)
-        #elif opcion == "D":
-        #    reportes.precio_ventas_globales_pokemons()
+        elif opcion == "D":
+            resultado = reportes.precio_ventas_globales_pokemons(lista_datos)
+            if len(resultado) == 0:
+                utils.limpiar_pantalla()
+                print("No hay datos para mostrar.")
+                input("Presione Enter para continuar...")
+            else:
+                print("Precio de ventas globales de pokemons:")
+                print("-" * 40)
+                print("Name | Global_Sales |")
+                print("-" * 40)
+                for juego in resultado:
+                    print(f"{juego.get('Name', 'Desconocido')} | {juego.get('Global_Sales', 0)} |")
         elif opcion == "E":
             utils.limpiar_pantalla()
             print("Juegos:")
@@ -53,7 +64,7 @@ def menu_principal() -> None:
         elif opcion == "Z":
             # Al salir tenemos que exportar el resultado en un .csv llamado juegos_filtrados.csv
             print("Saliendo del programa. ¡Hasta luego!")
-            datos.guardar_salir(_lista_datos)
+            datos.guardar_salir(lista_datos)
             break
         else:
             print("Opcion no valida, intente nuevamente.")
