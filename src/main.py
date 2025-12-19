@@ -56,11 +56,6 @@ def menu_principal() -> None:
                 print("-" * 40)
                 for juego in resultado:
                     print(f"{juego.get('Name', 'Desconocido')} | {juego.get('Global_Sales', 0)} |")
-        elif opcion == "E":
-            utils.limpiar_pantalla()
-            print("Juegos:")
-            print("-" * 40)
-            reportes.ver_juegos(lista_datos)
         elif opcion == "Z":
             # Al salir tenemos que exportar el resultado en un .csv llamado juegos_filtrados.csv
             print("Saliendo del programa. ¡Hasta luego!")
